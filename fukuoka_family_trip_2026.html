@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#12324A" />
+<title>福岡馬拉松 × 牛丸火車之旅｜2026.11.06–11.10</title>
+<style>
+  :root{
+    --ink:#173042; --muted:#60798a; --paper:#f7f4ec; --card:#fffdf8;
+    --blue:#245b76; --sky:#d9eef4; --red:#d45445; --yellow:#f5c65b;
+    --green:#6b8b6d; --line:#d9e0dc; --shadow:0 12px 34px rgba(23,48,66,.10);
+    --radius:22px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; color:var(--ink); background:
+      radial-gradient(circle at 12% 0%, #e5f5f8 0 18%, transparent 36%),
+      radial-gradient(circle at 95% 8%, #fff1c9 0 15%, transparent 32%),
+      var(--paper);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang HK","Noto Sans TC","Microsoft JhengHei",sans-serif;
+    line-height:1.6;
+  }
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:auto;padding:20px 18px 80px}
+  .hero{
+    overflow:hidden; border-radius:30px; padding:28px; min-height:330px;
+    background:linear-gradient(135deg,#12324A,#245b76 60%,#4f8aa1);
+    color:white; position:relative; box-shadow:var(--shadow);
+  }
+  .hero:before,.hero:after{content:"";position:absolute;border-radius:999px;opacity:.18;background:#fff}
+  .hero:before{width:260px;height:260px;right:-80px;top:-90px}
+  .hero:after{width:180px;height:180px;right:110px;bottom:-110px}
+  .eyebrow{font-weight:800;letter-spacing:.08em;font-size:.85rem;color:#d8edf4}
+  h1{font-size:clamp(2rem,5.2vw,4.25rem);line-height:1.02;margin:.35rem 0 1rem;max-width:800px}
+  .hero p{max-width:700px;color:#edf7fa;font-size:1.04rem}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .chip{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.25);padding:7px 12px;border-radius:999px;font-size:.9rem}
+  .train{
+    position:absolute;right:25px;bottom:18px;font-size:clamp(62px,12vw,132px);filter:drop-shadow(0 10px 10px rgba(0,0,0,.18));
+    transform:rotate(-2deg)
+  }
+  .quick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 32px}
+  .quick .q{background:var(--card);padding:16px;border-radius:18px;border:1px solid rgba(23,48,66,.08);box-shadow:0 6px 18px rgba(23,48,66,.05)}
+  .q b{display:block;font-size:1.05rem}
+  .q small{color:var(--muted)}
+  .section-title{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:34px 0 14px}
+  .section-title h2{margin:0;font-size:1.65rem}
+  .section-title p{margin:0;color:var(--muted);font-size:.92rem}
+  .tabs{display:flex;gap:8px;overflow:auto;padding:3px 0 12px;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{border:0;background:#e9eeea;color:#34505e;padding:10px 14px;border-radius:999px;font-weight:750;white-space:nowrap;cursor:pointer}
+  .tab.active{background:var(--ink);color:white}
+  .day{background:var(--card);border:1px solid rgba(23,48,66,.08);border-radius:var(--radius);margin:0 0 18px;box-shadow:0 8px 24px rgba(23,48,66,.05);overflow:hidden}
+  .dayhead{padding:20px 22px 12px;display:flex;align-items:center;gap:14px}
+  .datebox{min-width:78px;text-align:center;background:var(--sky);border-radius:16px;padding:8px 10px}
+  .datebox strong{display:block;font-size:1.5rem;line-height:1}
+  .datebox span{font-size:.78rem;color:var(--muted)}
+  .dayhead h3{margin:0;font-size:1.28rem}
+  .dayhead p{margin:2px 0 0;color:var(--muted);font-size:.9rem}
+  .timeline{padding:4px 18px 18px 24px}
+  .item{position:relative;display:grid;grid-template-columns:105px 1fr;gap:14px;padding:14px 0 14px 18px;border-left:2px solid var(--line)}
+  .item:before{content:"";position:absolute;width:12px;height:12px;border-radius:50%;background:var(--yellow);left:-7px;top:22px;border:3px solid var(--card)}
+  .time{font-weight:850;color:var(--red);font-variant-numeric:tabular-nums}
+  .event{padding:0 0 2px}
+  .event b{font-size:1rem}
+  .event p{margin:4px 0 0;color:#45606f}
+  .meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
+  .tag{font-size:.76rem;padding:4px 8px;border-radius:8px;background:#edf2ef;color:#426153}
+  .tag.train{position:static;filter:none;transform:none;font-size:.76rem;background:#e8f0f6;color:#315970}
+  .tag.run{background:#fde9e3;color:#9f4234}
+  .tag.kid{background:#fff0c8;color:#765b12}
+  .buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .btn{display:inline-flex;align-items:center;gap:5px;text-decoration:none;padding:8px 10px;border-radius:10px;border:1px solid #d5ded9;background:white;font-size:.83rem;font-weight:700}
+  .btn:hover{background:#f3f7f4}
+  .note{margin:12px 18px 20px;padding:15px 16px;border-radius:16px;background:#f0f5f1;border-left:5px solid var(--green)}
+  .note.warn{background:#fff4e8;border-left-color:#e9a54a}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .card{background:var(--card);border:1px solid rgba(23,48,66,.08);border-radius:20px;padding:18px;box-shadow:0 7px 22px rgba(23,48,66,.05)}
+  .card h3{margin:0 0 8px}
+  .card p{margin:0;color:#4f6977}
+  .mission{background:linear-gradient(135deg,#fff8d9,#fff1bd);border:none}
+  .check{display:flex;align-items:flex-start;gap:10px;margin:10px 0}
+  .check input{margin-top:5px;accent-color:var(--red);transform:scale(1.15)}
+  .hotel{background:linear-gradient(145deg,#e7f4f6,#fffdf8)}
+  .rain{background:linear-gradient(145deg,#eef2ff,#fffdf8)}
+  .footer{margin-top:36px;padding:22px;border-top:1px solid #d7ddd8;color:var(--muted);font-size:.82rem}
+  .footer a{font-weight:700}
+  .sticky{position:sticky;bottom:12px;z-index:10;display:flex;justify-content:center;margin-top:24px}
+  .sticky-inner{display:flex;gap:8px;background:rgba(23,48,66,.92);backdrop-filter:blur(12px);padding:8px;border-radius:999px;box-shadow:0 12px 28px rgba(23,48,66,.18)}
+  .sticky a,.sticky button{border:0;text-decoration:none;color:white;background:transparent;padding:9px 12px;border-radius:999px;font-weight:760;font-size:.84rem;cursor:pointer}
+  .sticky a:hover,.sticky button:hover{background:rgba(255,255,255,.12)}
+  .hidden{display:none!important}
+  @media (max-width:760px){
+    .wrap{padding:12px 12px 70px}
+    .hero{padding:22px 20px;min-height:350px;border-radius:24px}
+    .train{right:16px;bottom:12px}
+    .quick{grid-template-columns:1fr 1fr}
+    .cards{grid-template-columns:1fr}
+    .item{grid-template-columns:78px 1fr;padding-left:13px;gap:8px}
+    .dayhead{padding:17px 15px 10px}
+    .timeline{padding:4px 12px 15px 17px}
+    .section-title{display:block}
+    .section-title p{margin-top:4px}
+  }
+  @media print{
+    body{background:white}.sticky,.tabs{display:none!important}.wrap{max-width:none;padding:0}.hero{box-shadow:none}.day,.card{box-shadow:none;break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero" id="top">
+    <div class="eyebrow">FUKUOKA FAMILY TRIP · 2026</div>
+    <h1>福岡馬拉松 ×<br>牛丸火車之旅</h1>
+    <p>11月6日至10日 · 天神 → 糸島 → 博多 → 門司港<br>
+    核心原則：爸爸跑馬拉松少走路、媽媽交通簡單、牛丸每天都有火車小驚喜。</p>
+    <div class="chips">
+      <span class="chip">🏃 福岡馬拉松</span>
+      <span class="chip">🚆 新幹線 & 鐵道</span>
+      <span class="chip">🐷 Peppa 小任務</span>
+      <span class="chip">🍣 壽司 & 魚生</span>
+      <span class="chip">👦 4歲友善</span>
+    </div>
+    <div class="train" aria-hidden="true">🚄</div>
+  </header>
+
+  <section class="quick">
+    <div class="q"><small>爸爸抵達</small><b>11/6 Fri · 14:55</b><small>香港 → 福岡</small></div>
+    <div class="q"><small>媽媽＋牛丸抵達</small><b>11/7 Sat · 13:00</b><small>一家三口會合</small></div>
+    <div class="q"><small>馬拉松</small><b>11/8 Sun · 08:20</b><small>天神起跑</small></div>
+    <div class="q"><small>回港</small><b>11/10 Tue · 15:00</b><small>18:05 抵香港</small></div>
+  </section>
+
+  <div class="section-title">
+    <div><h2>每日行程</h2><p>按人物篩選，手機看也不會變成「行程 Excel 牆」。</p></div>
+  </div>
+  <nav class="tabs" aria-label="行程篩選">
+    <button class="tab active" data-filter="all">全部</button>
+    <button class="tab" data-filter="dad">👨 爸爸</button>
+    <button class="tab" data-filter="family">👨‍👩‍👦 全家</button>
+    <button class="tab" data-filter="kid">🚆 牛丸重點</button>
+  </nav>
+
+  <section class="day" data-groups="dad">
+    <div class="dayhead">
+      <div class="datebox"><strong>06</strong><span>NOV · FRI</span></div>
+      <div><h3>爸爸先到福岡 · 跑者報到</h3><p>今日唯一KPI：順利報到、吃得舒服、早睡。</p></div>
+    </div>
+    <div class="timeline">
+      <div class="item"><div class="time">14:55</div><div class="event"><b>抵達福岡機場國際線</b><p>入境及取行李，預留約45–60分鐘。</p><div class="meta"><span class="tag run">爸爸</span></div></div></div>
+      <div class="item"><div class="time">15:50</div><div class="event"><b>機場 → THE GATE HOTEL FUKUOKA by HULIC</b><p>建議直接乘的士，約30分鐘。放行李後不用研究轉車，保存體力。</p><div class="buttons"><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=THE+GATE+HOTEL+FUKUOKA+by+HULIC">📍 地圖</a></div></div></div>
+      <div class="item"><div class="time">16:45</div><div class="event"><b>步行往福岡市役所西側ふれあい広場</b><p>由酒店步行約5–10分鐘。</p><div class="buttons"><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=福岡市役所西側ふれあい広場">📍 EXPO 地圖</a></div></div></div>
+      <div class="item"><div class="time">17:00</div><div class="event"><b>福岡馬拉松 EXPO · 跑者報到</b><p>領跑手物資。證件及最終所需文件在出發前再次核對。</p><div class="meta"><span class="tag run">Marathon</span></div><div class="buttons"><a class="btn" target="_blank" href="https://www.f-marathon.jp/">🏃 官方網站</a></div></div></div>
+      <div class="item"><div class="time">18:00</div><div class="event"><b>天神晚餐</b><p>壽司／魚定食＋白飯。賽前不要挑戰大量生蠔、超辣料理或飲酒。</p><div class="meta"><span class="tag">🍣 賽前友善</span></div></div></div>
+      <div class="item"><div class="time">19:15+</div><div class="event"><b>回酒店休息</b><p>整理號碼布、跑鞋、能量補給與翌日衣物。今晚沒有第二場「天神步行馬拉松」。</p></div></div>
+    </div>
+  </section>
+
+  <section class="day" data-groups="dad family kid">
+    <div class="dayhead">
+      <div class="datebox"><strong>07</strong><span>NOV · SAT</span></div>
+      <div><h3>一家會合 · 博多站火車暖身</h3><p>爸爸保存雙腳，牛丸先嚐一口鐵路甜品。</p></div>
+    </div>
+    <div class="timeline">
+      <div class="item"><div class="time">08:30</div><div class="event"><b>爸爸 Shake-out Run</b><p>只做15–20分鐘非常輕鬆慢跑，之後回酒店休息。</p><div class="meta"><span class="tag run">爸爸</span></div></div></div>
+      <div class="item"><div class="time">13:00</div><div class="event"><b>媽媽＋牛丸抵達福岡</b><p>取行李後建議直接的士往天神酒店，一家會合。</p><div class="meta"><span class="tag kid">4歲友善</span></div></div></div>
+      <div class="item"><div class="time">15:30</div><div class="event"><b>天神 → 博多</b><p>福岡市地下鐵空港線，車程約5分鐘。</p><div class="meta"><span class="tag train">🚇 地鐵</span></div></div></div>
+      <div class="item"><div class="time">15:45–17:00</div><div class="event"><b>JR博多City · つばめの杜ひろば</b><p>屋頂看JR列車、新幹線與鐵道神社。若大雨或強風，改在博多站室內看車及逛AMU Plaza。</p><div class="meta"><span class="tag train">🚆 牛丸重點</span><span class="tag kid">親子</span></div><div class="buttons"><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=つばめの杜ひろば">📍 地圖</a></div></div></div>
+      <div class="item"><div class="time">18:00</div><div class="event"><b>早晚餐 · 天神</b><p>爸爸以熟食、飯、烏冬、魚類為主，19:15前回房休息。</p></div></div>
+    </div>
+    <div class="note warn"><b>馬拉松前夜：</b> 不安排夜景、屋台巡遊或購物長征。牛丸若仍有電量，讓他在酒店完成 Peppa 貼紙任務，爸爸則正式進入飛行模式。</div>
+  </section>
+
+  <section class="day" data-groups="dad family kid">
+    <div class="dayhead">
+      <div class="datebox"><strong>08</strong><span>NOV · SUN</span></div>
+      <div><h3>福岡馬拉松 Day 🏃</h3><p>爸爸跑42.195km，媽媽＋牛丸由起點打氣後前往糸島終點。</p></div>
+    </div>
+    <div class="timeline">
+      <div class="item"><div class="time">05:45</div><div class="event"><b>爸爸早餐＋補水</b><p>只吃平日長課已測試過的食物。</p><div class="meta"><span class="tag run">爸爸</span></div></div></div>
+      <div class="item"><div class="time">約07:00</div><div class="event"><b>步行前往起跑區</b><p>酒店位於天神，起點非常方便。實際分區入場及寄物時間以最終Runner Guide為準。</p></div></div>
+      <div class="item"><div class="time">08:20</div><div class="event"><b>福岡馬拉松起跑</b><p>牛丸在起點完成第一個「Go Daddy！」打氣任務。</p><div class="meta"><span class="tag run">🏁 Start</span><span class="tag kid">🐷 Peppa Mission</span></div></div></div>
+      <div class="item"><div class="time">08:35</div><div class="event"><b>媽媽＋牛丸前往筑前前原</b><p>由天神乘空港線／JR筑肥線方向，預留約40分鐘；再按大會最終安排乘應援者接駁交通往終點。</p><div class="meta"><span class="tag train">🚆 電車</span></div></div></div>
+      <div class="item"><div class="time">11:15前</div><div class="event"><b>糸島終點區候跑</b><p>先食小食、去廁所、找好觀賽位置。4歲小朋友不要把「等爸爸」變成另一項耐力運動。</p></div></div>
+      <div class="item"><div class="time">約12:00–12:30</div><div class="event"><b>爸爸完成比賽 · 全家會合</b><p>以約4小時完賽作行程預留，真正時間視爸爸配速及大會情況。</p><div class="meta"><span class="tag run">🏅 Finish</span></div></div></div>
+      <div class="item"><div class="time">13:00+</div><div class="event"><b>返回天神</b><p>首選大會終點往天神的接駁安排；若未能使用，則返回筑前前原再搭JR。10月底再按官方最終交通資料更新。</p></div></div>
+      <div class="item"><div class="time">15:00</div><div class="event"><b>酒店恢復時間</b><p>洗澡、補水、睡覺。這個下午「沒有景點」本身就是景點。</p></div></div>
+      <div class="item"><div class="time">18:00</div><div class="event"><b>慶功晚餐 🍣</b><p>正式解鎖魚生、壽司與爸爸想吃的福岡料理。</p></div></div>
+    </div>
+  </section>
+
+  <section class="day" data-groups="family kid">
+    <div class="dayhead">
+      <div class="datebox"><strong>09</strong><span>NOV · MON</span></div>
+      <div><h3>換酒店 · 牛丸鐵路主菜日 🚄</h3><p>新幹線 → JR → 百年車站 → 鐵路博物館，一日四重奏。</p></div>
+    </div>
+    <div class="timeline">
+      <div class="item"><div class="time">09:00</div><div class="event"><b>天神酒店 Check-out → 博多</b><p>三人帶行李，建議直接乘的士約15–20分鐘，新酒店先寄存行李。</p></div></div>
+      <div class="item"><div class="time">09:30</div><div class="event"><b>建議入住：Miyako Hotel Hakata</b><p>博多站旁，之後搭新幹線和翌日去機場都方便。酒店仍屬待確認選項。</p><div class="buttons"><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Miyako+Hotel+Hakata">📍 地圖</a></div></div></div>
+      <div class="item"><div class="time">約10:00</div><div class="event"><b>博多 → 小倉 · 新幹線</b><p>車程約20分鐘。今天交通本身就是牛丸的第一個景點。</p><div class="meta"><span class="tag train">🚄 新幹線</span><span class="tag kid">牛丸重點</span></div></div></div>
+      <div class="item"><div class="time">約10:25</div><div class="event"><b>小倉 → 門司港</b><p>JR鹿兒島本線約14分鐘。</p><div class="meta"><span class="tag train">🚆 JR</span></div></div></div>
+      <div class="item"><div class="time">10:50–12:45</div><div class="event"><b>九州鐵道紀念館</b><p>真實保存車輛、模型、駕駛體驗及Mini Railway，是牛丸今次旅程的頭號鐵路景點。</p><div class="meta"><span class="tag train">🚂 火車主菜</span><span class="tag kid">4歲友善</span></div><div class="buttons"><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=九州鉄道記念館">📍 地圖</a><a class="btn" target="_blank" href="https://www.k-rhm.jp/">🚂 官方網站</a></div></div></div>
+      <div class="item"><div class="time">12:45–14:00</div><div class="event"><b>門司港午餐＋短散步</b><p>看看門司港站及Retro區。爸爸馬拉松翌日不安排長距離步行。</p><div class="buttons"><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=門司港駅">📍 門司港站</a></div></div></div>
+      <div class="item"><div class="time">約14:15</div><div class="event"><b>門司港 → 小倉 → 博多</b><p>JR＋新幹線返回，預計15:30–16:00到酒店Check-in。</p></div></div>
+      <div class="item"><div class="time">17:30+</div><div class="event"><b>博多站晚餐＋再看火車</b><p>爸媽吃飯，牛丸隔着玻璃繼續監察新幹線運作。各有所忙。</p></div></div>
+    </div>
+  </section>
+
+  <section class="day" data-groups="family kid">
+    <div class="dayhead">
+      <div class="datebox"><strong>10</strong><span>NOV · TUE</span></div>
+      <div><h3>最後半天 · 博多 → 福岡機場</h3><p>不趕景點，留足時間去國際線。</p></div>
+    </div>
+    <div class="timeline">
+      <div class="item"><div class="time">08:30</div><div class="event"><b>早餐＋博多站自由活動</b><p>可再看火車、買手信，保持輕鬆。</p></div></div>
+      <div class="item"><div class="time">11:30</div><div class="event"><b>返回酒店取行李</b></div></div>
+      <div class="item"><div class="time">約12:00</div><div class="event"><b>酒店 → 福岡機場國際線</b><p>一家三口＋行李建議直接的士。避免先到國內線再轉Terminal接駁車。</p></div></div>
+      <div class="item"><div class="time">15:00</div><div class="event"><b>福岡起飛 → 香港</b><p>預計18:05抵達香港。</p><div class="meta"><span class="tag">✈️ 回家</span></div></div></div>
+    </div>
+  </section>
+
+  <div class="section-title">
+    <div><h2>牛丸專區 🚆🐷</h2><p>把旅行變成四歲小朋友真的會記得的遊戲。</p></div>
+  </div>
+  <section class="cards">
+    <div class="card mission">
+      <h3>Peppa Train Mission</h3>
+      <label class="check"><input type="checkbox" data-save="m1"><span>🐷 Peppa／George 在博多站與新幹線合照</span></label>
+      <label class="check"><input type="checkbox" data-save="m2"><span>🏁 舉「Go Daddy!」牌幫爸爸打氣</span></label>
+      <label class="check"><input type="checkbox" data-save="m3"><span>🚉 在門司港百年車站拍照</span></label>
+      <label class="check"><input type="checkbox" data-save="m4"><span>🚂 找到九州鐵道紀念館最喜歡的一架火車</span></label>
+      <label class="check"><input type="checkbox" data-save="m5"><span>🏅 和爸爸的馬拉松獎牌合照</span></label>
+    </div>
+    <div class="card rain">
+      <h3>☔ 雨天 Plan B</h3>
+      <p><b>11/7：</b>若博多站屋頂因天氣關閉，改為博多站室內看新幹線＋AMU Plaza。<br><br>
+      <b>11/9：</b>鐵道紀念館照常作核心，只縮短門司港戶外散步；實際營業狀況當日再確認。</p>
+    </div>
+    <div class="card hotel">
+      <h3>🏨 酒店策略</h3>
+      <p><b>11/6–11/9：</b>THE GATE HOTEL FUKUOKA by HULIC，天神馬拉松基地。<br><br>
+      <b>11/9：</b>建議轉博多站旁酒店，首選 Miyako Hotel Hakata，方便鐵路日及翌日機場。</p>
+    </div>
+  </section>
+
+  <div class="section-title">
+    <div><h2>出發前最後核對</h2><p>這幾項屬會變動資料，網頁刻意不把它們「寫死」。</p></div>
+  </div>
+  <section class="card">
+    <label class="check"><input type="checkbox" data-save="c1"><span>福岡馬拉松 Runner Guide、起跑分區及寄物時間</span></label>
+    <label class="check"><input type="checkbox" data-save="c2"><span>糸島終點應援者接駁及返回天神班次／購票安排</span></label>
+    <label class="check"><input type="checkbox" data-save="c3"><span>九州鐵道紀念館 11月9日開館及Mini Railway營運</span></label>
+    <label class="check"><input type="checkbox" data-save="c4"><span>11月6日至10日是否新增 Peppa Pig／鐵路期間限定活動</span></label>
+    <label class="check"><input type="checkbox" data-save="c5"><span>11月9日博多酒店最終確認</span></label>
+  </section>
+
+  <footer class="footer">
+    <b>資料備註：</b>交通時間為規劃用約數，實際以當日交通及大會安排為準。官方參考：
+    <a target="_blank" href="https://www.f-marathon.jp/">福岡馬拉松</a> ·
+    <a target="_blank" href="https://www.k-rhm.jp/">九州鐵道紀念館</a> ·
+    <a target="_blank" href="https://www.jrhakatacity.com/">JR博多City</a> ·
+    <a target="_blank" href="https://www.fukuoka-airport.jp/">福岡機場</a>
+  </footer>
+
+  <div class="sticky">
+    <div class="sticky-inner">
+      <a href="#top">↑ 頂部</a>
+      <button onclick="window.print()">🖨️ 列印 / PDF</button>
+      <button onclick="copyPlan()">📋 複製摘要</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const tabs=[...document.querySelectorAll('.tab')];
+const days=[...document.querySelectorAll('.day')];
+tabs.forEach(t=>t.addEventListener('click',()=>{
+  tabs.forEach(x=>x.classList.remove('active')); t.classList.add('active');
+  const f=t.dataset.filter;
+  days.forEach(d=>{
+    const groups=(d.dataset.groups||'').split(' ');
+    d.classList.toggle('hidden', f!=='all' && !groups.includes(f));
+  });
+}));
+document.querySelectorAll('input[data-save]').forEach(cb=>{
+  const k='fukuoka_'+cb.dataset.save;
+  cb.checked=localStorage.getItem(k)==='1';
+  cb.addEventListener('change',()=>localStorage.setItem(k,cb.checked?'1':'0'));
+});
+function copyPlan(){
+ const txt=`福岡馬拉松 × 牛丸火車之旅（2026/11/6–11/10）
+11/6 爸爸14:55抵福岡；17:00 Marathon EXPO
+11/7 媽媽＋牛丸13:00抵達；下午博多站看火車
+11/8 08:20福岡馬拉松；媽媽＋牛丸前往糸島終點打氣
+11/9 換博多酒店；新幹線→小倉→門司港→九州鐵道紀念館
+11/10 上午博多自由活動；15:00福岡起飛，18:05香港抵達`;
+ navigator.clipboard.writeText(txt).then(()=>alert('行程摘要已複製！'));
+}
+</script>
+</body>
+</html>
